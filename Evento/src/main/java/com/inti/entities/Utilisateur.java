@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,7 +47,6 @@ public class Utilisateur implements Serializable {
 					@JoinColumn(name = "id_role", table = "role", referencedColumnName = "idRole") })
 	private Set<Role> roles = new HashSet<Role>();
 	private boolean enabled = true;
-
 	@Column(unique = true)
 	private String username;
 	private String password;
@@ -56,5 +57,8 @@ public class Utilisateur implements Serializable {
 	private float noteMoyenne;
 	private String description;
 	private String contact;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@JoinColumn(name="FK_ABONNEMENT", referencedColumnName = "idAbonnement")
+	private Abonnement abonnement;
 
 }

@@ -47,14 +47,12 @@ public class UtilisateurController {
 		return utilisateurService.saveUtilisateur(utilisateur);
 	}
 
-	// @RequestMapping(value = "/users", method = RequestMethod.GET)
 	@GetMapping("/users")
 	public List<Utilisateur> findAll() {
 		return utilisateurService.findAll();
 	}
 
 	@RequestMapping(value = "/users/{idUser}", method = RequestMethod.GET)
-	// @GetMapping("/users/{idUser}")
 	public Utilisateur findOne(@PathVariable("idUser") Long id) {
 		return utilisateurService.findOne(id);
 	}
