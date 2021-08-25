@@ -2,11 +2,17 @@ package com.inti.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,4 +41,10 @@ public class Evenement implements Serializable {
 	private Date dateDebut;
 	private Date dateFin;
 	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="Evenements_Catalogue",joinColumns =  @JoinColumn(name="idEvenement"),inverseJoinColumns=@JoinColumn(name="idCatalogue"))
+	private List<Catalogue>catalogues;
+	@ManyToOne
+	@JoinColumn(name = "id_adresse",referencedColumnName = "idAdresse")
+	private Adresse adresse;
 }

@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Adresse;
 import com.inti.services.interfaces.AdresseService;
 
 @RestController
+@RequestMapping(value="/gestionAdresses")
 public class AdresseController {
 
 	@Autowired
@@ -34,7 +36,7 @@ public class AdresseController {
         adresseService.deleteAdresse(id);
     }
 
-    @GetMapping("/adresse/{idVoiture}")
+    @GetMapping("/adresse/{idAdresse}")
 	public Adresse findOne(@PathVariable("idAdresse") Long id) {
 		return adresseService.findOne(id);
 	}

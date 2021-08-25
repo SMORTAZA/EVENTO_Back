@@ -42,7 +42,7 @@ public class UtilisateurController {
 		//// Atributs prestataire
 		user.setContact(utilisateur.getContact());
 		user.setNoteMoyenne(utilisateur.getNoteMoyenne());
-		user.setDescription(utilisateur.getDescription());;
+		user.setDescription(utilisateur.getDescription());
 
 		return utilisateurService.saveUtilisateur(utilisateur);
 	}

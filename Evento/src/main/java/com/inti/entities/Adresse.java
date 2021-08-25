@@ -1,11 +1,13 @@
 package com.inti.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +28,7 @@ public class Adresse implements Serializable {
 	private float latitude;
 	private float longitude;
 	private float altitude;
+	
+	@OneToMany(mappedBy = "adresse")
+	private List<Evenement>evenements;
 }
