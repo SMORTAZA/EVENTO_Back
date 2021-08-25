@@ -3,6 +3,7 @@ package com.inti.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,4 +17,7 @@ public class Avis implements Serializable{
 	private Long idAvis;
 	private String commentaire;
 	private int note;
+	
+	@OneToOne
+	private Servicee service;
 }
