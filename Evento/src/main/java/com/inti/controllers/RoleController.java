@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Role;
 import com.inti.services.interfaces.RoleService;
+
 @CrossOrigin
 @RestController
-@RequestMapping(value="/gestionRoles")
+@RequestMapping(value = "/gestionRoles")
 public class RoleController {
 	@Autowired
 	RoleService roleService;

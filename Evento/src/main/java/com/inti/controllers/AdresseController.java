@@ -3,6 +3,7 @@ package com.inti.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.inti.entities.Adresse;
 import com.inti.services.interfaces.AdresseService;
 
+@CrossOrigin
 @RestController
-@RequestMapping(value="/gestionAdresses")
+@RequestMapping(value = "/gestionAdresses")
 public class AdresseController {
 
 	@Autowired
