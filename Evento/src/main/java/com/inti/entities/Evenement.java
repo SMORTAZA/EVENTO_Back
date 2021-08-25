@@ -47,4 +47,7 @@ public class Evenement implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_adresse",referencedColumnName = "idAdresse")
 	private Adresse adresse;
+	
+	@ManyToMany(mappedBy = "evenements")
+	private List<Utilisateur>utilisateurs;
 }

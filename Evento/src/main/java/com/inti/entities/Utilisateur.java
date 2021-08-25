@@ -3,6 +3,7 @@ package com.inti.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -58,7 +59,13 @@ public class Utilisateur implements Serializable {
 	private String description;
 	private String contact;
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-	@JoinColumn(name="FK_ABONNEMENT", referencedColumnName = "idAbonnement")
+	@JoinColumn(name = "FK_ABONNEMENT", referencedColumnName = "idAbonnement")
 	private Abonnement abonnement;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "evenement_utilisateur", joinColumns = {
+			@JoinColumn(name = "id_utilisateur", referencedColumnName = "idUtilisateur") }, inverseJoinColumns = {
+					@JoinColumn(name = "id_evenement", table = "evenement", referencedColumnName = "idEvenement") })
+	private List<Evenement> evenements;
 
 }
