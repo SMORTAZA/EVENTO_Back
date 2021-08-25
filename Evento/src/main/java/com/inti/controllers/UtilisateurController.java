@@ -42,19 +42,17 @@ public class UtilisateurController {
 		//// Atributs prestataire
 		user.setContact(utilisateur.getContact());
 		user.setNoteMoyenne(utilisateur.getNoteMoyenne());
-		user.setDescription(utilisateur.getDescription());;
+		user.setDescription(utilisateur.getDescription());
 
 		return utilisateurService.saveUtilisateur(utilisateur);
 	}
 
-	// @RequestMapping(value = "/users", method = RequestMethod.GET)
 	@GetMapping("/users")
 	public List<Utilisateur> findAll() {
 		return utilisateurService.findAll();
 	}
 
 	@RequestMapping(value = "/users/{idUser}", method = RequestMethod.GET)
-	// @GetMapping("/users/{idUser}")
 	public Utilisateur findOne(@PathVariable("idUser") Long id) {
 		return utilisateurService.findOne(id);
 	}
