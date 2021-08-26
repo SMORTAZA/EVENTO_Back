@@ -24,7 +24,7 @@ public class EvenementController {
 	EvenementService evenementService;
 
 	@PostMapping("/evenement")
-	public Evenement saveEvenement(@RequestBody (required = false) Evenement evenement) {
+	public Evenement saveEvenement(@RequestBody(required = false) Evenement evenement) {
 		return evenementService.saveEvenement(evenement);
 	}
 
