@@ -17,27 +17,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private AppUserDetailsService appUserDetailsService;
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-		auth.userDetailsService(appUserDetailsService).passwordEncoder(bCryptPasswordEncoder);
+
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(appUserDetailsService).passwordEncoder(bCryptPasswordEncoder);
+//	}
+//
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http.authorizeRequests().anyRequest()
+//				.authenticated() // toutes les requêtes doivent passées par la procédure de connexion
+//			.and()
+//			.formLogin()
+//				.permitAll() // il faut faire la connexion avant d'ouvrir la ressource
+//			.and()
+//			.logout()
+//				.logoutUrl("/logout") // un Url pour faire la déconnexion
+//				.permitAll()
+//			.and()
+//			.httpBasic() // la mêthode de sécurité
+//			.and()
+//			.csrf().disable(); //désactivé le cross-site request forgery
+//
+//	}
+
+	@Override
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
+		httpSecurity.authorizeRequests().antMatchers("/").permitAll();
+
 	}
-	
-	protected void configure(HttpSecurity http) throws Exception{
-		http
-			.authorizeRequests()
-				.anyRequest().authenticated() // toutes les requêtes doivent passées par la procédure de connexion
-			.and()
-			.formLogin()
-				.permitAll() // il faut faire la connexion avant d'ouvrir la ressource
-			.and()
-			.logout()
-				.logoutUrl("/logout") // un Url pour faire la déconnexion
-				.permitAll()
-			.and()
-			.httpBasic() // la mêthode de sécurité
-			.and()
-			.csrf().disable(); //désactivé le cross-site request forgery
-		
-	}
-	
 }
