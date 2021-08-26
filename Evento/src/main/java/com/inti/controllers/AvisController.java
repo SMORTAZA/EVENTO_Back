@@ -24,7 +24,7 @@ public class AvisController {
 	AvisService avisService;
 
 	@PostMapping("/avis")
-	public Avis saveEvenement(@RequestBody Avis avis) {
+	public Avis saveEvenement(@RequestBody (required = false) Avis avis) {
 		return avisService.saveAvis(avis);
 	}
 

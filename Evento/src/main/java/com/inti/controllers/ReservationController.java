@@ -24,7 +24,7 @@ public class ReservationController {
 	ReservationService reservationService;
 
 	@PostMapping("/reservation")
-	public Reservation saveEvenement(@RequestBody Reservation reservation) {
+	public Reservation saveEvenement(@RequestBody (required = false) Reservation reservation) {
 		return reservationService.saveReservation(reservation);
 	}
 

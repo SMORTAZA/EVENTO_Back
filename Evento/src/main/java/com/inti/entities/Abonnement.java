@@ -27,7 +27,7 @@ public class Abonnement implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idAbonnement;
 	private String nom;
-	private Float tarif;
+	private float tarif;
 	private Date dateDebut;
 	private Date dateFin;
 	

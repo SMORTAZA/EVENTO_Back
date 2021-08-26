@@ -33,7 +33,7 @@ public class Evenement implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idEvenement;
+	private Long idEvenement;
 	private String description;
 	private float budget;
 	private String categorie;

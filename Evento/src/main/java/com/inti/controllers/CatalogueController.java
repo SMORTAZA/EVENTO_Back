@@ -24,7 +24,7 @@ public class CatalogueController {
 	CatalogueService catalogueService;
 
 	@PostMapping("/catalogue")
-	public Catalogue saveCatalogue(@RequestBody Catalogue catalogue) {
+	public Catalogue saveCatalogue(@RequestBody (required = false) Catalogue catalogue) {
 		return catalogueService.saveCatalogue(catalogue);
 	}
 

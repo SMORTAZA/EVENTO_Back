@@ -24,7 +24,7 @@ public class ServiceeController {
 	ServiceeService reservationService;
 
 	@PostMapping("/service")
-	public Servicee saveEvenement(@RequestBody Servicee reservation) {
+	public Servicee saveEvenement(@RequestBody (required = false) Servicee reservation) {
 		return reservationService.saveService(reservation);
 	}
 

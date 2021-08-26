@@ -24,7 +24,7 @@ public class AbonnementController {
 	AbonnementService abonnementService;
 
 	@PostMapping("/abonnement")
-	public Abonnement saveAbonnement(@RequestBody Abonnement abonnement) {
+	public Abonnement saveAbonnement(@RequestBody(required = false) Abonnement abonnement) {
 		return abonnementService.saveAbonnement(abonnement);
 	}
 

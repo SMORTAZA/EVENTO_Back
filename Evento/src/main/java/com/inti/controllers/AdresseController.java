@@ -24,7 +24,7 @@ public class AdresseController {
 	AdresseService adresseService;
 	
 	@PostMapping("/adresse")
-    public Adresse saveAdresse(@RequestBody Adresse adresse) {
+    public Adresse saveAdresse(@RequestBody (required = false) Adresse adresse) {
         return adresseService.saveAdresse(adresse);
     }
 
