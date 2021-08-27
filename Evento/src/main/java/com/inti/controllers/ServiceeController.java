@@ -30,7 +30,7 @@ public class ServiceeController {
 		return reservationService.saveService(reservation);
 	}
 	
-	@PostMapping("/service")
+	@PostMapping("/serviceimg")
 	public String saveServiceImage(@RequestParam("tarif") float tarif, @RequestParam("description") String description,
 			@RequestParam("file") MultipartFile file) {
 		try {
