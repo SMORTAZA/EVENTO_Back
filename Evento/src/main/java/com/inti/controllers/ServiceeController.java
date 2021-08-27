@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.inti.entities.Servicee;
 import com.inti.services.interfaces.ServiceeService;
@@ -24,8 +26,24 @@ public class ServiceeController {
 	ServiceeService reservationService;
 
 	@PostMapping("/service")
-	public Servicee saveEvenement(@RequestBody (required = false) Servicee reservation) {
+	public Servicee saveService(@RequestBody (required = false) Servicee reservation) {
 		return reservationService.saveService(reservation);
+	}
+	
+	@PostMapping("/service")
+	public String saveServiceImage(@RequestParam("tarif") float tarif, @RequestParam("description") String description,
+			@RequestParam("file") MultipartFile file) {
+		try {
+			Servicee currentService = new Servicee();
+			currentService.setTarif(tarif);
+			currentService.setDescription(description);
+			currentService.setImage(file.getBytes());
+			reservationService.saveService(currentService);
+			return "File uploaded successfully! filename = " + file.getOriginalFilename();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return "Fail! maybe you had uploaded the file before or the file's size > 500kB";
+		}
 	}
 
 	@GetMapping("/service")
