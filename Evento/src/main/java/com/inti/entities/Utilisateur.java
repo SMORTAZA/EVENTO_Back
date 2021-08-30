@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -67,5 +68,9 @@ public class Utilisateur implements Serializable {
 			@JoinColumn(name = "id_utilisateur", referencedColumnName = "idUtilisateur") }, inverseJoinColumns = {
 					@JoinColumn(name = "id_evenement", table = "evenement", referencedColumnName = "idEvenement") })
 	private List<Evenement> evenements;
+
+	@OneToMany(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "FK_PRESTATAIRE", referencedColumnName = "idUtilisateur")
+	private List<Servicee> services;
 
 }
