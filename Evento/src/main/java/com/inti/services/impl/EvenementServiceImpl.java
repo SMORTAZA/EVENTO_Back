@@ -1,6 +1,7 @@
 package com.inti.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,11 @@ public class EvenementServiceImpl implements EvenementService {
 	@Override
 	public List<Evenement> findByCategorie(String categorie) {
 		return evenementRepository.findByCategorie(categorie);
+	}
+
+	@Override
+	public Evenement findOne(Long id) {
+		return evenementRepository.getById(id);
 	}
 
 }
