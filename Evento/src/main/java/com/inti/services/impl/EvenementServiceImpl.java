@@ -38,4 +38,9 @@ public class EvenementServiceImpl implements EvenementService {
 		return evenementRepository.findById(id).get();
 	}
 
+	@Override
+	public List<Evenement> findByCategorie(String categorie) {
+		return evenementRepository.findByCategorie(categorie);
+	}
+
 }

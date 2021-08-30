@@ -27,7 +27,7 @@ public class Reservation implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReservation;
 	private Date date;
-	private Float CountFinal;
+	private Float countFinal;
 	
 	
 	@ManyToMany

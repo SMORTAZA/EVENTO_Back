@@ -3,11 +3,15 @@ package com.inti.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +33,7 @@ public class Adresse implements Serializable {
 	private float longitude;
 	private float altitude;
 	
-	@OneToMany(mappedBy = "adresse")
+	@OneToMany(mappedBy = "adresse",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Evenement>evenements;
 }

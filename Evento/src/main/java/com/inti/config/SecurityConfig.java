@@ -2,6 +2,7 @@ package com.inti.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -24,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest()
-				.authenticated() // toutes les requêtes doivent passées par la procédure de connexion
+				.permitAll() // toutes les requêtes doivent passées par la procédure de connexion
 			.and()
 			.formLogin()
 				.permitAll() // il faut faire la connexion avant d'ouvrir la ressource

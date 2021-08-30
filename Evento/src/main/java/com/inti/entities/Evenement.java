@@ -19,7 +19,6 @@ import lombok.Data;
 
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,7 +29,7 @@ public class Evenement implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idEvenement;
@@ -40,14 +39,14 @@ public class Evenement implements Serializable {
 	private String nom;
 	private Date dateDebut;
 	private Date dateFin;
-	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="Evenements_Catalogue",joinColumns =  @JoinColumn(name="idEvenement"),inverseJoinColumns=@JoinColumn(name="idCatalogue"))
-	private List<Catalogue>catalogues;
-	@ManyToOne
-	@JoinColumn(name = "id_adresse",referencedColumnName = "idAdresse")
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "Evenements_Catalogue", joinColumns = @JoinColumn(name = "idEvenement"), inverseJoinColumns = @JoinColumn(name = "idCatalogue"))
+	private List<Catalogue> catalogues;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_adresse", referencedColumnName = "idAdresse")
 	private Adresse adresse;
-	
+
 	@ManyToMany(mappedBy = "evenements")
-	private List<Utilisateur>utilisateurs;
+	private List<Utilisateur> utilisateurs;
 }

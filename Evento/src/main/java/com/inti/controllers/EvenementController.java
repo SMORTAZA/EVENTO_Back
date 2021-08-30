@@ -42,4 +42,10 @@ public class EvenementController {
 	public Evenement findOne(@PathVariable("idEvenement") Long id) {
 		return evenementService.findOne(id);
 	}
+	
+	@GetMapping("/evenement/categorie/{categorie}")
+	public List<Evenement> findByCategorie(@PathVariable("categorie") String categorie) {
+		System.out.println(evenementService.findByCategorie(categorie));
+		return evenementService.findByCategorie(categorie);
+	}
 }
