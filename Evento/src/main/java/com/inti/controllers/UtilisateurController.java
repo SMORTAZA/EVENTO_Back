@@ -63,11 +63,21 @@ public class UtilisateurController {
 		utilisateurService.deleteUtilisateur(id);
 	}
 	
-	@PutMapping("/users/id")
-	public Utilisateur updateUtilisateur(@PathVariable("id")Long idUtilisateur, Utilisateur utilisateur) {
+	@PutMapping("/users/{id}")
+	public Utilisateur updateUtilisateur(@PathVariable("id") Long idUtilisateur, @RequestBody Utilisateur utilisateur ) {
 		Utilisateur currentUser=utilisateurService.findOne(idUtilisateur);
+		System.out.println(currentUser);
+		//currentUser.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
+		//currentUser.setUsername(utilisateur.getUsername());
 		currentUser.setNom(utilisateur.getNom());
 		currentUser.setPrenom(utilisateur.getPrenom());
+		//currentUser.setRoles(utilisateur.getRoles());
+		currentUser.setDateNaissance(utilisateur.getDateNaissance());
+		currentUser.setMail(utilisateur.getMail());
+		//// Atributs prestataire
+		currentUser.setContact(utilisateur.getContact());
+		currentUser.setNoteMoyenne(utilisateur.getNoteMoyenne());
+		currentUser.setDescription(utilisateur.getDescription());
 		return utilisateurService.saveUtilisateur(currentUser);
 	}
 

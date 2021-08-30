@@ -33,9 +33,9 @@ public class EvenementServiceImpl implements EvenementService {
 	}
 
 	@Override
-	public Evenement findOne(Long id) {
+	public List<Evenement> findByName(String nom) {
 		// TODO Auto-generated method stub
-		return evenementRepository.findById(id).get();
+		return evenementRepository.findByName(nom);
 	}
 
 	@Override

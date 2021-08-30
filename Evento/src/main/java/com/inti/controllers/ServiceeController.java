@@ -60,5 +60,9 @@ public class ServiceeController {
 	public Servicee findOne(@PathVariable("idService") Long id) {
 		return reservationService.findOne(id);
 	}
+	@GetMapping("/service/user/{idUser}")
+	public List<Servicee> findOffreByIdUser(@PathVariable("idUser") Long id) {
+		return reservationService.findAllServicesByUserId(id);
+	}
 
 }

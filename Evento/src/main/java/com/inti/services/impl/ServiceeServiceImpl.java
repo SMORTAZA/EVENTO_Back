@@ -35,4 +35,9 @@ public class ServiceeServiceImpl implements ServiceeService{
 		serviceeRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Servicee> findAllServicesByUserId(Long id) {
+		return serviceeRepository.findAllByIdUser(id);
+	}
+
 }

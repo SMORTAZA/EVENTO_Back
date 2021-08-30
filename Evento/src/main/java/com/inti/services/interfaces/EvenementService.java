@@ -15,5 +15,7 @@ public interface EvenementService {
 	public Evenement findOne(Long id);
 	
 	public List<Evenement> findByCategorie(String categorie);
+	
+	public List<Evenement> findByName(String nom);
 
 }

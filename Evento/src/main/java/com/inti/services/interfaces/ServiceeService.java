@@ -13,4 +13,6 @@ public interface ServiceeService {
 
 	void deleteService(Long id);
 	
+	List<Servicee> findAllServicesByUserId(Long id);
+	
 }

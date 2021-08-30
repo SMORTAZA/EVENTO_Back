@@ -31,18 +31,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll() // il faut faire la connexion avant d'ouvrir la ressource
 			.and()
 			.logout()
-				.logoutUrl("/logout") // un Url pour faire la déconnexion
-				.permitAll()
+				.logoutUrl("/logout") 
+				.permitAll()  // un Url pour faire la déconnexion
 			.and()
 			.httpBasic() // la mêthode de sécurité
 			.and()
-			.csrf().disable(); //désactivé le cross-site request forgery
-
+			.csrf().disable(); // désactivé le cross-site request forgery
 	}
 
-	/*@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.authorizeRequests().antMatchers("/").permitAll();
-
-	}*/
+	/*
+	 * @Override protected void configure(HttpSecurity httpSecurity) throws
+	 * Exception { httpSecurity.authorizeRequests().antMatchers("/").permitAll();
+	 * 
+	 * }
+	 */
 }
