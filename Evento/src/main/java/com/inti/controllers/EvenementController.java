@@ -38,8 +38,9 @@ public class EvenementController {
 		evenementService.deleteEvenement(id);
 	}
 
-	@GetMapping("/evenement/{idEvenement}")
-	public Evenement findOne(@PathVariable("idEvenement") Long id) {
-		return evenementService.findOne(id);
+	@GetMapping("/evenement/{nom}")
+	public List<Evenement> findOne(@PathVariable("nom") String nom) {
+		List<Evenement> events = evenementService.findByName(nom);
+		return events;
 	}
 }

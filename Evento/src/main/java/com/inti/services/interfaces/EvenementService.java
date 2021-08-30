@@ -12,6 +12,6 @@ public interface EvenementService {
 	
 	public Evenement saveEvenement(Evenement evenement);
 	
-	public Evenement findOne(Long id);
+	public List<Evenement> findByName(String nom);
 
 }

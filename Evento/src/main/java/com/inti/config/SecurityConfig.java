@@ -24,18 +24,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest()
-				.authenticated() // toutes les requêtes doivent passées par la procédure de connexion
-			.and()
-			.formLogin()
-				.permitAll() // il faut faire la connexion avant d'ouvrir la ressource
-			.and()
-			.logout()
-				.logoutUrl("/logout") // un Url pour faire la déconnexion
 				.permitAll()
 			.and()
-			.httpBasic() // la mêthode de sécurité
+			.formLogin()
+				.permitAll() 
 			.and()
-			.csrf().disable(); //désactivé le cross-site request forgery
+			.logout()
+				.logoutUrl("/logout") 
+				.permitAll()
+			.and()
+			.httpBasic() 
+			.and()
+			.csrf().disable(); 
 
 	}
 
