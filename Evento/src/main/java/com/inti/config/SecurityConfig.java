@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	protected void configure(HttpSecurity http) throws Exception {
+<<<<<<< HEAD
 		http.authorizeRequests().anyRequest()
 				.permitAll()
 			.and()
@@ -36,12 +37,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.httpBasic() 
 			.and()
 			.csrf().disable(); 
+=======
+		http.authorizeRequests().anyRequest().permitAll() // toutes les requêtes doivent passées par la procédure de
+															// connexion
+				.and().formLogin().permitAll() // il faut faire la connexion avant d'ouvrir la ressource
+				.and().logout().logoutUrl("/logout").permitAll() // un Url pour faire la déconnexion
+				.permitAll().and().httpBasic() // la mêthode de sécurité
+				.and().csrf().disable(); // désactivé le cross-site request forgery
+>>>>>>> cec05a7de5ba1b359bebd6fbf4894608e11241db
 
 	}
 
-	/*@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.authorizeRequests().antMatchers("/").permitAll();
-
-	}*/
+	/*
+	 * @Override protected void configure(HttpSecurity httpSecurity) throws
+	 * Exception { httpSecurity.authorizeRequests().antMatchers("/").permitAll();
+	 * 
+	 * }
+	 */
 }
