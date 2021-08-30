@@ -12,6 +12,6 @@ public interface AbonnementService {
 
 	public Abonnement saveAbonnement(Abonnement abonnement);
 
-	public Abonnement findOne(Long id);
+	public List<Abonnement> findByName(String nom);
 
 }
