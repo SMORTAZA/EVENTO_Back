@@ -44,7 +44,8 @@ public class Evenement implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "Evenements_Catalogue", joinColumns = @JoinColumn(name = "idEvenement"), inverseJoinColumns = @JoinColumn(name = "idCatalogue"))
 	private List<Catalogue> catalogues;
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	//@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_adresse", referencedColumnName = "idAdresse")
 	private Adresse adresse;
 
