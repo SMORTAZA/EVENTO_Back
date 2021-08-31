@@ -39,18 +39,10 @@ public class AbonnementController {
 		abonnementService.deleteAbonnement(id);
 	}
 
-	@GetMapping("/abonnement/{idAbonnement}")
-	public Abonnement findOne(@PathVariable("idAbonnement") Long id) {
-		return abonnementService.findOne(id);
+	@GetMapping("/abonnement/{nom}")
+	public List<Abonnement> findByName(@PathVariable("nom") String nom) {
+		return abonnementService.findByName(nom);
 	}
 	
-	@PutMapping("/abonnement/{idAbonnement}")
-	public Abonnement updateUtilisateur(@PathVariable("idAbonnement") Long id, @RequestBody Abonnement abonnement) {
-		Abonnement currentAbonnement = abonnementService.findOne(id);
-		currentAbonnement.setNom(abonnement.getNom());
-		currentAbonnement.setTarif(abonnement.getTarif());
-		currentAbonnement.setDateDebut(abonnement.getDateDebut());
-		currentAbonnement.setDateFin(abonnement.getDateFin());
-		return abonnementService.saveAbonnement(currentAbonnement);
-	}
+	
 }

@@ -34,9 +34,9 @@ public class AbonnementServiceImpl implements AbonnementService {
 	}
 
 	@Override
-	public Abonnement findOne(Long id) {
+	public List<Abonnement> findByName(String nom) {
 		// TODO Auto-generated method stub
-		return abonnementRepository.findById(id).get();
+		return abonnementRepository.findByName(nom);
 	}
 
 }

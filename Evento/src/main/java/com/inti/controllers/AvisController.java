@@ -38,8 +38,13 @@ public class AvisController {
 		avisService.deleteAvis(id);
 	}
 
-	@GetMapping("/avis/{idAvis}")
+	/*@GetMapping("/avis/{idAvis}")
 	public Avis findOne(@PathVariable("idAvis") Long id) {
 		return avisService.findOne(id);
+	}*/
+	
+	@GetMapping("/avis/{note}")
+	public List<Avis> findByNote(@PathVariable("note") int note) {
+		return avisService.findByNote(note);
 	}
 }

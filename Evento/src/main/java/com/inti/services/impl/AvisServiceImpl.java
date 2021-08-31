@@ -35,4 +35,10 @@ public class AvisServiceImpl implements AvisService{
 		avisRepository.deleteById(id);
 	}
 
+	@Override
+	public List<Avis> findByNote(int note) {
+		// TODO Auto-generated method stub
+		return avisRepository.findByNote(note);
+	}
+
 }
