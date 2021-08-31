@@ -22,10 +22,13 @@ import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 //Lombok
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -68,9 +71,5 @@ public class Utilisateur implements Serializable {
 			@JoinColumn(name = "id_utilisateur", referencedColumnName = "idUtilisateur") }, inverseJoinColumns = {
 					@JoinColumn(name = "id_evenement", table = "evenement", referencedColumnName = "idEvenement") })
 	private List<Evenement> evenements;
-
-	@OneToMany(cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "FK_PRESTATAIRE", referencedColumnName = "idUtilisateur")
-	private List<Servicee> services;
 
 }

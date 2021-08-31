@@ -3,12 +3,15 @@ package com.inti.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -27,9 +30,12 @@ public class Servicee implements Serializable{
 	private String description;
 	@Lob
 	private byte[] image;
-	
 	@OneToMany(mappedBy = "service")
 	private List<Avis> avis;
+	
+	@ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "FK_PRESTATAIRE", referencedColumnName="idUtilisateur")
+	private Utilisateur prestataire;
 	
 	
 	

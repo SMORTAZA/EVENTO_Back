@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.inti.entities.Servicee;
 import com.inti.services.interfaces.ServiceeService;
+import com.inti.services.interfaces.UtilisateurService;
 
 @CrossOrigin
 @RestController
@@ -24,6 +25,8 @@ public class ServiceeController {
 
 	@Autowired
 	ServiceeService reservationService;
+	@Autowired
+	UtilisateurService utilisateurService;
 
 	@PostMapping("/service")
 	public Servicee saveService(@RequestBody (required = false) Servicee reservation) {
@@ -31,13 +34,14 @@ public class ServiceeController {
 	}
 	
 	@PostMapping("/serviceimg")
-	public String saveServiceImage(@RequestParam("tarif") float tarif, @RequestParam("description") String description,
+	public String saveServiceImage(@RequestParam("tarif") float tarif, @RequestParam("description") String description, @RequestParam("prestataire") Long idPrestataire,
 			@RequestParam("file") MultipartFile file) {
 		try {
 			Servicee currentService = new Servicee();
 			currentService.setTarif(tarif);
 			currentService.setDescription(description);
 			currentService.setImage(file.getBytes());
+			currentService.setPrestataire(utilisateurService.findOne(idPrestataire));
 			reservationService.saveService(currentService);
 			return "File uploaded successfully! filename = " + file.getOriginalFilename();
 		} catch (Exception ex) {
