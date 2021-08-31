@@ -47,4 +47,9 @@ public class AvisController {
 	public List<Avis> findByNote(@PathVariable("note") int note) {
 		return avisService.findByNote(note);
 	}
+	
+	@GetMapping("/avis/note/{note}")
+	public List<Avis> findByNote2(@PathVariable("note") int note) {
+		return avisService.findByNote(note);
+	}
 }
