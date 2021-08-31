@@ -33,7 +33,7 @@ public class Servicee implements Serializable{
 	@OneToMany(mappedBy = "service")
 	private List<Avis> avis;
 	
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "FK_PRESTATAIRE", referencedColumnName="idUtilisateur")
 	private Utilisateur prestataire;
 	

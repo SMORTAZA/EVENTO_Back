@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,13 +25,13 @@ import com.inti.services.interfaces.UtilisateurService;
 public class ServiceeController {
 
 	@Autowired
-	ServiceeService reservationService;
+	ServiceeService serviceeService;
 	@Autowired
 	UtilisateurService utilisateurService;
 
 	@PostMapping("/service")
 	public Servicee saveService(@RequestBody (required = false) Servicee reservation) {
-		return reservationService.saveService(reservation);
+		return serviceeService.saveService(reservation);
 	}
 	
 	@PostMapping("/serviceimg")
@@ -42,7 +43,7 @@ public class ServiceeController {
 			currentService.setDescription(description);
 			currentService.setImage(file.getBytes());
 			currentService.setPrestataire(utilisateurService.findOne(idPrestataire));
-			reservationService.saveService(currentService);
+			serviceeService.saveService(currentService);
 			return "File uploaded successfully! filename = " + file.getOriginalFilename();
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -52,21 +53,30 @@ public class ServiceeController {
 
 	@GetMapping("/service")
 	public List<Servicee> findAll() {
-		return reservationService.findAll();
+		return serviceeService.findAll();
 	}
 
 	@DeleteMapping("/service/{idService}")
 	public void deleteService(@PathVariable("idService") Long id) {
-		reservationService.deleteService(id);
+		serviceeService.deleteService(id);
 	}
 
 	@GetMapping("/service/{idService}")
 	public Servicee findOne(@PathVariable("idService") Long id) {
-		return reservationService.findOne(id);
+		return serviceeService.findOne(id);
 	}
 	@GetMapping("/service/user/{idUser}")
 	public List<Servicee> findOffreByIdUser(@PathVariable("idUser") Long id) {
-		return reservationService.findAllServicesByUserId(id);
+		return serviceeService.findAllServicesByUserId(id);
+	}
+	
+	@PutMapping("/service/{id}")
+	public Servicee updateServicee(@PathVariable("id") Long idServicee, @RequestBody Servicee servicee) {
+		Servicee currentServicee = serviceeService.findOne(idServicee);
+		currentServicee.setDescription(servicee.getDescription());
+		currentServicee.setTarif(servicee.getTarif());
+		currentServicee.setImage(servicee.getImage());
+		return serviceeService.saveService(currentServicee);
 	}
 
 }
