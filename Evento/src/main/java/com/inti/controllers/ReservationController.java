@@ -42,5 +42,10 @@ public class ReservationController {
 	public Reservation findOne(@PathVariable("idReservation") Long id) {
 		return reservationService.findOne(id);
 	}
+	
+//	@DeleteMapping("/reservation/evenement/{idEvenement}")
+//	public void deleteReservationByIdEvenement(@PathVariable("idEvenement") Long id) {
+//		reservationService.deleteReservationByIdEvenement(id);
+//	}
 
 }

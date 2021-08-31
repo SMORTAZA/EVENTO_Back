@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -43,7 +44,7 @@ public class Evenement implements Serializable {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "Evenements_Catalogue", joinColumns = @JoinColumn(name = "idEvenement"), inverseJoinColumns = @JoinColumn(name = "idCatalogue"))
 	private List<Catalogue> catalogues;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_adresse", referencedColumnName = "idAdresse")
 	private Adresse adresse;
 
